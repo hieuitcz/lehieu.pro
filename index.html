@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Học cùng Bơ</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/hieuitcz/hieuitcz.github.io/main/img/favicon.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__emoji">🧸</div>
+        <div>
+          <h1>Học cùng Bơ</h1>
+          <p>Chạm để nghe và học cùng bé</p>
+        </div>
+      </div>
+
+      <div class="mode-switch" aria-label="Chọn chế độ">
+        <button class="mode-btn is-active" data-mode="sound">🔊</button>
+        <button class="mode-btn" data-mode="vi">VI</button>
+        <button class="mode-btn" data-mode="en">EN</button>
+        <button class="mode-btn" data-mode="cz">CZ</button>
+        <button id="btnBaby" class="mode-btn mode-btn--baby" type="button">🧸 Baby</button>
+        <button id="btnAutoplay" class="mode-btn" type="button">▶ Auto</button>
+        <button id="btnRandom" class="mode-btn" type="button">🎲 Random</button>
+        <button id="btnSettings" class="mode-btn" type="button">⚙️</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="homeView" class="view view--active">
+        <div id="statusBar" class="status-bar">Đang tải dữ liệu…</div>
+        <div id="animalGrid" class="animal-grid"></div>
+      </section>
+
+      <section id="detailView" class="view detail-view" aria-hidden="true">
+        <button id="backBtn" class="icon-btn back-btn" aria-label="Về trang chủ" title="Về trang chủ">↑</button>
+
+        <div class="card-stage">
+          <div class="card-panel">
+            <button id="prevBtn" class="nav-btn nav-btn--left" aria-label="Con trước">‹</button>
+
+            <div class="card-content">
+              <button id="heroBtn" class="hero-button" aria-label="Phát âm thanh">
+                <img id="heroImage" class="hero-image" src="" alt="" />
+              </button>
+              <h2 id="heroTitle" class="hero-title"></h2>
+              <button id="soundBtn" class="sound-btn">Nghe âm thanh</button>
+            </div>
+
+            <button id="nextBtn" class="nav-btn nav-btn--right" aria-label="Con sau">›</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="settingsModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" id="settingsBackdrop"></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Parent settings">
+      <h3>Cài đặt phụ huynh</h3>
+
+      <label class="setting-row">
+        <span>Cho hiện EN</span>
+        <input type="checkbox" id="setShowEN" />
+      </label>
+
+      <label class="setting-row">
+        <span>Cho hiện CZ</span>
+        <input type="checkbox" id="setShowCZ" />
+      </label>
+
+      <label class="setting-row">
+        <span>Tự phát (autoplay)</span>
+        <input type="checkbox" id="setAutoplay" />
+      </label>
+
+      <label class="setting-row setting-row--column">
+        <span>Tốc độ autoplay: <strong id="speedLabel">2.8s</strong></span>
+        <input type="range" id="setSpeed" min="1500" max="6000" step="100" value="2800" />
+      </label>
+
+      <div class="modal__actions">
+        <button id="settingsClose" class="mode-btn" type="button">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audioEl" preload="none"></audio>
+  <script src="/app.js" defer></script>
+</body>
+</html>
